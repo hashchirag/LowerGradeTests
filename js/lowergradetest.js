@@ -1,5 +1,6 @@
 // Array of all the questions and choices to populate the questions. This might be saved in some JSON file or a database and we would have to read the data in.
 var all_questions = [];
+var i =0;
 
 var mat_questions = [{
   question_string: "Reema's height is 5'2\",Anita is taller than Reema but she is not taller than Pinky.Pinky is shorter than her cousin Rani,but she is not shorter than Reema.Who is the tallest in the group ?",
@@ -205,8 +206,9 @@ var Quiz = function(quiz_name) {
 // A function that you can enact on an instance of a quiz object. This function is called add_question() and takes in a Question object which it will add to the questions field.
 Quiz.prototype.add_question = function(question) {
   // Randomly choose where to add question
-  var index_to_add_question = Math.floor(Math.random() * this.questions.length);
+  var index_to_add_question = i;
   this.questions.splice(index_to_add_question, 0, question);
+  i++;
 }
 
 // A function that you can enact on an instance of a quiz object. This function is called render() and takes in a variable called the container, which is the <div> that I will render the quiz in.

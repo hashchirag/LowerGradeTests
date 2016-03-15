@@ -160,10 +160,12 @@ p#selected {
 .flipper.default .front, .flipper.default .back {
   background-color: #F44336;
 }
-
+/*green*/
 .flipper.selected .front, .flipper.selected .back {
   background-color: #4CAF50;
 }
+
+
 .flipper.required .back {
   background-color: #fbb95a;
 }
@@ -182,11 +184,24 @@ p#selected {
   -ms-transform: rotateY(180deg);
   transform: rotateY(180deg);
 }
+
+.flipper.default.selected.back{
+  background-color: #4CAF50;
+}
+
+.flipper.selected{
+  background-color: #4CAF50;
+}
+
 .flip-container:hover .flipper.default .front, .flip-container:hover .flipper.default .back {
   background-color: #5a97fb;
 }
 .flip-container:hover .flipper.default .front h2, .flip-container:hover .flipper.default .front p, .flip-container:hover .flipper.default .back h2, .flip-container:hover .flipper.default .back p {
   color: #ffffff;
+}
+
+.flip-container:hover .flipper.selected .front,.flip-container:hover .flipper.selected .back {
+  background-color: #4CAF50;
 }
 
 /* Allows graceful degredation in IE */
