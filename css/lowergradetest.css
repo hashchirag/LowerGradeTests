@@ -41,6 +41,10 @@ body {
   font-size: 14px;
   cursor: pointer;
   outline: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 #quiz button:hover {
   background: #36a39c;
@@ -51,6 +55,10 @@ body {
   background: #9ACFCC;
   color: #00403C;
   cursor: default;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 #question {
   padding: 20px;
@@ -102,23 +110,23 @@ body {
   position: absolute;
   top: 44px;
   left: 0px;
-  background: #FAFAFA;
+  background: #ffffff;
   width: 100%;
   height: calc(100% - 44px);
 }
 #quiz-results-message {
   display: block;
-  color: #00403C;
+  color: #ffffff;
   font-size: 20px;
   font-weight: bold;
 }
 #quiz-results-score {
   display: block;
-  color: #31706c;
+  color: #ffffff;
   font-size: 20px;
 }
 #quiz-results-score b {
-  color: #00403C;
+  color: #ffffff;
   font-weight: 600;
   font-size: 20px;
 }

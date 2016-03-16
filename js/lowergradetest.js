@@ -1,66 +1,88 @@
 // Array of all the questions and choices to populate the questions. This might be saved in some JSON file or a database and we would have to read the data in.
 var all_questions = [];
-var i =0;
+var i = 0;
+var phy_score = 0;
+var che_score = 0;
+var mat_score = 0;
 
 var mat_questions = [{
   question_string: "Reema's height is 5'2\",Anita is taller than Reema but she is not taller than Pinky.Pinky is shorter than her cousin Rani,but she is not shorter than Reema.Who is the tallest in the group ?",
   choices: {
     correct: "Rani",
-    wrong: ["Anita", "Pinky", "Reema"]
+    wrong: ["Anita", "Pinky", "Reema"],
+    subject: "mat"
   }
 }, {
   question_string: "6 pipes are required to fill a tank in 1 hour 20 min. How long will it take if only 5 pipes of the same type are used?",
   choices: {
     correct: "1 hour 36 minutes",
-    wrong: ["	1 hour 48 minutes", "1 hour 24 minutes", "None of these"]
+    wrong: ["	1 hour 48 minutes", "1 hour 24 minutes", "None of these"],
+    subject: "mat"
+
   }
 }, {
   question_string: 'On which axis does the point (-8, 0)lie?',
   choices: {
     correct: "x-axis",
-    wrong: ["y-axis", "origin", "None"]
+    wrong: ["y-axis", "origin", "None"],
+    subject: "mat"
+
   }
 }, {
   question_string: 'The factorization of 9(x^2)-3x-20 is',
   choices: {
     correct: "(3x + 4)(3x - 5)",
-    wrong: ["(3x - 4)(3x + 5)", "	(3x - 4)(3x - 5)", "(3x + 4)(3x + 5)"]
+    wrong: ["(3x - 4)(3x + 5)", "	(3x - 4)(3x - 5)", "(3x + 4)(3x + 5)"],
+    subject: "mat"
+
   }
 }, {
   question_string: 'If ∠A = 4∠B = 6∠C, then A : B : C ?',
   choices: {
     correct: "12 : 3 : 2",
-    wrong: ["3 : 4 : 6", "2 : 3 : 4", "6 : 4 : 3"]
+    wrong: ["3 : 4 : 6", "2 : 3 : 4", "6 : 4 : 3"],
+    subject: "mat"
+
   }
 }, {
   question_string: '△PQR, ∠P=60∘, ∠Q=50∘ and Which side of the triangle is the longest?',
   choices: {
     correct: "PQ",
-    wrong: ["PR", "QR", "None"]
+    wrong: ["PR", "QR", "None"],
+    subject: "mat"
+
   }
 }, {
   question_string: 'The Quadrilateral forms by joining the mid-points of the sides of a Quadrilateral PQRS, taken in order, is a Rhombus if',
   choices: {
     correct: "PQRS is a Rhombus",
-    wrong: ["	Diagonals of PQRS are equal", "PQRS is a Parallelogram", "None of these"]
+    wrong: ["	Diagonals of PQRS are equal", "PQRS is a Parallelogram", "None of these"],
+    subject: "mat"
+
   }
 }, {
   question_string: 'If ∠A = 4∠B = 6∠C, then A : B : C ?',
   choices: {
     correct: "12 : 3 : 2",
-    wrong: ["3 : 4 : 6", "2 : 3 : 4", "6 : 4 : 3"]
+    wrong: ["3 : 4 : 6", "2 : 3 : 4", "6 : 4 : 3"],
+    subject: "mat"
+
   }
 }, {
   question_string: 'The construction of a triangle ABC, given that BC = 6 cm, ∠B=45 is not possible when difference of AB and AC is equal to :',
   choices: {
     correct: "6.9 cm",
-    wrong: ["	5.0 cm", "	5.2 cm", "	4.0 cm"]
+    wrong: ["	5.0 cm", "	5.2 cm", "	4.0 cm"],
+    subject: "mat"
+
   }
 }, {
   question_string: 'If VICTORY is encoded as YLFWRUB,how can SUCCESS be encoded ?',
   choices: {
     correct: "VXFFHVV",
-    wrong: ["VXEEIVV", "	VYEEHVV", "	VYEFIVV"]
+    wrong: ["VXEEIVV", "	VYEEHVV", "	VYEFIVV"],
+    subject: "mat"
+
   }
 }];
 //MATHS QUESTIONS END
@@ -71,61 +93,81 @@ var phy_questions = [{
   question_string: "The resulting force due to action of muscles is known as",
   choices: {
     correct: "Muscular Force",
-    wrong: ["Static Force", "Gravitation Force", "Magnetic Force"]
+    wrong: ["Static Force", "Gravitation Force", "Magnetic Force"],
+    subject: "phy"
+
   }
 }, {
   question_string: "Electric circuit provides a complete path for?",
   choices: {
     correct: "Current to flow",
-    wrong: ["	Heat to flow", "Proton to flow", "Neutron to flow"]
+    wrong: ["	Heat to flow", "Proton to flow", "Neutron to flow"],
+    subject: "phy"
+
   }
 }, {
   question_string: 'Suppose a planet starts shrinking the value of g starts',
   choices: {
     correct: "Increasing",
-    wrong: ["Decreasing", "Remains constant", "Becomes zero"]
+    wrong: ["Decreasing", "Remains constant", "Becomes zero"],
+    subject: "phy"
+
   }
 }, {
   question_string: 'What is the resistivity of Nichrome',
   choices: {
     correct: "10^13",
-    wrong: ["12.9×10^-8", "	10×10^-8", "1.60×10^-8"]
+    wrong: ["12.9×10^-8", "	10×10^-8", "1.60×10^-8"],
+    subject: "phy"
+
   }
 }, {
   question_string: 'The far point of a healthy person is',
   choices: {
     correct: "Infinity",
-    wrong: ["100m", "150m", "15cm"]
+    wrong: ["100m", "150m", "15cm"],
+    subject: "phy"
+
   }
 }, {
   question_string: 'The S.I unit of linear magnification is',
   choices: {
     correct: "No Unit",
-    wrong: ["m", "m^(-1)", "m^(2)"]
+    wrong: ["m", "m^(-1)", "m^(2)"],
+    subject: "phy"
+
   }
 }, {
   question_string: 'One Pascal is ',
   choices: {
     correct: "Newton per square meter",
-    wrong: ["Newton per kg", "Newton per meter", "Newton per square cm"]
+    wrong: ["Newton per kg", "Newton per meter", "Newton per square cm"],
+    subject: "phy"
+
   }
 }, {
   question_string: 'In due given food chain, suppose the amount of energy available at third trophic level is 50 KJ, what will be the energy available at due producer level?',
   choices: {
     correct: "5000KJ",
-    wrong: ["50 KJ", "5000 KJ", "5 KJ"]
+    wrong: ["50 KJ", "5000 KJ", "5 KJ"],
+    subject: "phy"
+
   }
 }, {
   question_string: 'Most of the sources of energy we use represent stored solar energy. Which of the following is not ultimately derived from the suns energy?',
   choices: {
     correct: "Nuclear Energy",
-    wrong: ["GeoThermal Energy", "Biomass", "Fossil Fuels"]
+    wrong: ["GeoThermal Energy", "Biomass", "Fossil Fuels"],
+    subject: "phy"
+
   }
 }, {
   question_string: 'Mass of electron',
   choices: {
     correct: "9.1 x 10^(-31) kg ",
-    wrong: ["9.1 x 10^(-31) g", "9.8 x 10^(-31) kg", "6.23 x 10^(-34) kg"]
+    wrong: ["9.1 x 10^(-31) g", "9.8 x 10^(-31) kg", "6.23 x 10^(-34) kg"],
+    subject: "phy"
+
   }
 }];
 // PHYSICS QUESTIONS END
@@ -135,61 +177,81 @@ var che_questions = [{
   question_string: "Which of the following substance should not be added to distilled water to make it good conductor?",
   choices: {
     correct: "Salts",
-    wrong: ["Acids", "Bases", "Alcohols"]
+    wrong: ["Acids", "Bases", "Alcohols"],
+    subject: "che"
+
   }
 }, {
   question_string: "Presence of unwanted gases and particles in air is called?",
   choices: {
     correct: "Air Pollution",
-    wrong: ["	Heat to flow", "Proton to flow", "Neutron to flow"]
+    wrong: ["	Heat to flow", "Proton to flow", "Neutron to flow"],
+    subject: "che"
+
   }
 }, {
   question_string: 'Preservatives or additives are :',
   choices: {
     correct: "Both natural and artificial",
-    wrong: ["only mixture of spices", "only artificial", "only natural"]
+    wrong: ["only mixture of spices", "only artificial", "only natural"],
+    subject: "che"
+
   }
 }, {
   question_string: 'A hard substance when bent produces a tinkling sound. Predict its nature.',
   choices: {
     correct: "Metal",
-    wrong: ["Compound", "Non-metal", "None of these"]
+    wrong: ["Compound", "Non-metal", "None of these"],
+    subject: "che"
+
   }
 }, {
   question_string: 'What is the atomic number of the first element of the lanthanide series?',
   choices: {
     correct: "57",
-    wrong: ["89", "87", "67"]
+    wrong: ["89", "87", "67"],
+    subject: "che"
+
   }
 }, {
   question_string: 'The most commonly used bleaching agent is',
   choices: {
     correct: "Chlorine",
-    wrong: ["Carbon dioxide", "Sodium Chloride", "Alcohols"]
+    wrong: ["Carbon dioxide", "Sodium Chloride", "Alcohols"],
+    subject: "che"
+
   }
 }, {
   question_string: 'The mass number of a nucleus is',
   choices: {
     correct: "the sum of the number of protons and neutrons present in the nucleus",
-    wrong: ["always more than the atomic weight", "a fraction", "negative"]
+    wrong: ["always more than the atomic weight", "a fraction", "negative"],
+    subject: "che"
+
   }
 }, {
   question_string: 'The mass number of an atom is equal to',
   choices: {
     correct: "the number of nucleons",
-    wrong: ["the number of protons and electrons", "the number of protons", "the number of neutrons"]
+    wrong: ["the number of protons and electrons", "the number of protons", "the number of neutrons"],
+    subject: "che"
+
   }
 }, {
   question_string: 'The chemical formula for HydroChloric Acid is ?',
   choices: {
     correct: "HCl",
-    wrong: ["HyCl", "HCh", "HCr"]
+    wrong: ["HyCl", "HCh", "HCr"],
+    subject: "che"
+
   }
 }, {
   question_string: 'Boiling is the change in state of a',
   choices: {
     correct: "liquid to a gas",
-    wrong: ["solid to a liquid.", "solid to a gas", "gas to a liquid"]
+    wrong: ["solid to a liquid.", "solid to a gas", "gas to a liquid"],
+    subject: "che"
+
   }
 }];
 //CHEMISTRY QUESTIONS END
@@ -269,8 +331,24 @@ Quiz.prototype.render = function(container) {
     for (var i = 0; i < self.questions.length; i++) {
       if (self.questions[i].user_choice_index === self.questions[i].correct_choice_index) {
         score++;
+
+        if (self.questions[i].subject == "phy") {
+          phy_score++;
+        }
+        if (self.questions[i].subject == "che") {
+          che_score++;
+        }
+        if (self.questions[i].subject == "mat") {
+          mat_score++;
+        }
       }
     }
+
+
+
+    console.log("phy score is " + phy_score);
+    console.log("chem score is " + che_score);
+    console.log("mat score is " + mat_score);
 
     // Display the score with the appropriate message
     var percentage = score / self.questions.length;
@@ -285,8 +363,28 @@ Quiz.prototype.render = function(container) {
     } else {
       message = 'Maybe you should try a little harder.'
     }
+    question_container.hide();
     $('#quiz-results-message').text(message);
-    $('#quiz-results-score').html('You got <b>' + score + '/' + self.questions.length + '</b> questions correct.');
+
+    var consolidated_results;
+    var mat_score_string = "";
+    var che_score_string = "";
+    var che_score_string = "";
+
+    consolidated_results = "Your marks stand as follows - <br/>";
+
+    if (sessionStorage.getItem("mat") === "true") {
+      consolidated_results = consolidated_results + mat_score_string + "Mathematics : <b>" + mat_score + "/10 </b>" + "<br/>";
+    }
+    if (sessionStorage.getItem("phy") === "true") {
+      consolidated_results = consolidated_results + che_score_string + "Physics : <b>" + phy_score + "/10 </b>" + "<br/>";
+    }
+    if (sessionStorage.getItem("che") === "true") {
+      consolidated_results = consolidated_results + che_score_string + "Chemistry : <b>" + che_score + "/10 </b>" + "<br/>";
+    }
+    $('#quiz-results-score').html(consolidated_results);
+
+    // $('#quiz-results-score').html('You got <b>' + score + '/' + self.questions.length + '</b> questions correct.');
     $('#quiz-results').slideDown();
     $('#quiz button').slideUp();
   });
@@ -305,12 +403,12 @@ Quiz.prototype.render = function(container) {
 }
 
 // An object for a Question, which contains the question, the correct choice, and wrong choices. This block is the constructor.
-var Question = function(question_string, correct_choice, wrong_choices) {
+var Question = function(question_string, correct_choice, wrong_choices, subject) {
   // Private fields for an instance of a Question object.
   this.question_string = question_string;
   this.choices = [];
   this.user_choice_index = null; // Index of the user's choice selection
-
+  this.subject = subject;
   // Random assign the correct choice an index
   this.correct_choice_index = Math.floor(Math.random() * wrong_choices.length + 1);
 
@@ -407,7 +505,7 @@ $(document).ready(function() {
   // Create Question objects from all_questions and add them to the Quiz object
   for (var i = 0; i < all_questions.length; i++) {
     // Create a new Question object
-    var question = new Question(all_questions[i].question_string, all_questions[i].choices.correct, all_questions[i].choices.wrong);
+    var question = new Question(all_questions[i].question_string, all_questions[i].choices.correct, all_questions[i].choices.wrong, all_questions[i].choices.subject);
 
     // Add the question to the instance of the Quiz object that we created previously
     quiz.add_question(question);
