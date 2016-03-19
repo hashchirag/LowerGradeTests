@@ -324,8 +324,8 @@ Quiz.prototype.render = function(container) {
     }
   });
 
-  // Add listener for the submit answers button
-  $('#submit-button').click(function() {
+  function submitButtonFunction() {
+
     // Determine how many questions the user got right
     var score = 0;
     for (var i = 0; i < self.questions.length; i++) {
@@ -387,6 +387,10 @@ Quiz.prototype.render = function(container) {
     // $('#quiz-results-score').html('You got <b>' + score + '/' + self.questions.length + '</b> questions correct.');
     $('#quiz-results').slideDown();
     $('#quiz button').slideUp();
+  }
+
+  $('#submit-button').click(function(e) {
+    submitButtonFunction();
   });
 
   // Add a listener on the questions container to listen for user select changes. This is for determining whether we can submit answers or not.
@@ -479,6 +483,9 @@ Question.prototype.render = function(container) {
   });
 }
 
+var countDownTime = 0;
+
+
 // "Main method" which will create all the objects and render the Quiz.
 $(document).ready(function() {
   // Create an instance of the Quiz object
@@ -487,19 +494,109 @@ $(document).ready(function() {
   if (sessionStorage.getItem("mat") === "true") {
     console.log("maths selected");
     all_questions = all_questions.concat(mat_questions);
+    countDownTime += 600;
   }
 
   if (sessionStorage.getItem("phy") === "true") {
     console.log("physics selected");
     all_questions = all_questions.concat(phy_questions);
+    countDownTime += 600;
   }
 
   if (sessionStorage.getItem("che") === "true") {
     console.log("chem selected");
     all_questions = all_questions.concat(che_questions);
+    countDownTime += 600;
   }
 
   console.log(all_questions);
+
+
+  //Timer part
+  function CountDown(container, time) {
+    this.container = container;
+    this.display = container.querySelector('.timer-display');
+    this.bar = container.querySelector('.timer-bar');
+    this.time = time;
+    this.remainingTime = this.time;
+    this.elapsedTime = 0;
+
+    this.updateDisplay();
+  }
+
+  CountDown.fn = CountDown.prototype;
+
+  CountDown.fn.updateCounters = function() {
+    this.remainingTime -= 1;
+    this.elapsedTime += 1;
+
+    //Case of time ended. Display Results
+    if (this.remainingTime == 0) {
+      $('#quiz button').click();
+    }
+
+  };
+
+  CountDown.fn.updateDisplay = function() {
+    this.display.innerText = parseInt(this.remainingTime / 60, 10) + ':' + ('0' + (this.remainingTime % 60)).substr(-2);
+  };
+
+  CountDown.fn.updateCanvasColor = function() {
+    var remainingTimePercentage = this.remainingTime / this.time;
+    var transition, duration;
+
+    if (remainingTimePercentage <= 0.7) {
+      transition = 'green-to-orange';
+      duration = 0.2 * this.time;
+    }
+
+    if (remainingTimePercentage <= 0.5) {
+      transition = 'orange-to-yellow';
+      duration = 0.1 * this.time;
+    }
+
+    if (remainingTimePercentage <= 0.4) {
+      transition = 'yellow-to-red';
+      duration = 0.4 * this.time;
+    }
+
+    if (transition && duration) {
+      this.container.style['-webkit-animation-duration'] = duration + 's';
+      this.container.classList.add(transition);
+    }
+  };
+
+  CountDown.fn.updateBarWidth = function() {
+    this.bar.style.width = (this.elapsedTime / this.time * 100) + '%';
+  };
+
+  CountDown.fn.checkFinalTime = function() {
+    if (this.remainingTime === 10) {
+      this.display.classList.add('finishing');
+    }
+  };
+
+  CountDown.fn.init = function() {
+    var tid = setInterval(function() {
+      if (this.remainingTime === 0) {
+        return clearInterval(tid);
+      }
+
+      this.updateCounters();
+      this.updateDisplay();
+      this.updateCanvasColor();
+      this.updateBarWidth();
+      this.checkFinalTime();
+    }.bind(this), 1000);
+
+    // this.button.innerText = 'Done!';
+  };
+
+
+  var mCountDownTimer = new CountDown(document.querySelector('.canvas'),countDownTime);
+  mCountDownTimer.init();
+  //End of timer
+
 
 
   // Create Question objects from all_questions and add them to the Quiz object
